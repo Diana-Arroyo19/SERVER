@@ -17,57 +17,58 @@ const requestHandler = async (req, res) => {
       // Escribiendo la respuesta
       res.write(`
       <html>
-        <head>
-          <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico">
-          <title>My App</title>
-          <style>
-            body {
-              background-color: #ECF0F1;
-              font-family: Arial, sans-serif;
-            }
-            h1, h2 {
-              color: #3498DB;
-              text-align: center;
-              margin-top: 50px;
-            }
-            form {
-              margin-top: 30px;
-              text-align: center;
-            }
-            input[type="text"] {
-              width: 300px;
-              padding: 10px;
-              border: none;
-              border-radius: 5px;
-              box-shadow: 0px 0px 5px #3498DB;
-              outline: none;
-            }
-            button[type="submit"] {
-              background-color: #3498DB;
-              color: #fff;
-              border: none;
-              border-radius: 5px;
-              padding: 10px 20px;
-              cursor: pointer;
-              box-shadow: 0px 0px 5px #3498DB;
-              outline: none;
-            }
-            button[type="submit"]:hover {
-              background-color: #2980B9;
-            }
-          </style>
-        </head>
-        <body> 
-          <h1>Hello from my server</h1>
-          <h2>Ingresa un mensaje</h2>
-          <div>
-            <form action="/message" method="POST">
-              <input type="text" name="message">
-              <button type="submit">Send</button>
-            </form>
-          </div>
-        </body>
-      </html>
+      <head>
+        <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico">
+        <title>My App</title>
+        <style>
+          body {
+            background: rgb(142,70,235);
+background: linear-gradient(0deg, rgba(142,70,235,1) 20%, rgba(131,83,233,0.46186396922050066) 100%);
+            font-family: Arial, sans-serif;
+          }
+          h1, h2 {
+            color: #000000;
+            text-align: center;
+            margin-top: 50px;
+          }
+          form {
+            margin-top: 30px;
+            text-align: center;
+          }
+          input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #000000;
+            outline: none;
+          }
+          button[type="submit"] {
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            box-shadow: 0px 0px 5px #000000;
+            outline: none;
+          }
+          button[type="submit"]:hover {
+            background-color: #2980B9;
+          }
+        </style>
+      </head>
+      <body> 
+        <h1>Hello from my server</h1>
+        <h2>Ingresa un mensaje</h2>
+        <div>
+          <form action="/message" method="POST">
+            <input type="text" name="message">
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </body>
+    </html>
       `);
       console.log(`📣 Respondiendo: 200 ${req.url} ${req.method}`);
       // Estableciendo codigo de respuesta
@@ -82,19 +83,25 @@ const requestHandler = async (req, res) => {
       let url_image = 'https://media.istockphoto.com/id/180841365/photo/hes-a-handsome-man.jpg?s=612x612&w=0&k=20&c=vjQLLI8g_a0O6_xx0plUu3CJ9AMhnSzHssLwgem8gE4=';
       // Escribiendo la respuesta
       res.write(`
-      <html>
-        <head>
-          <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico">
-          <title>My App</title>
-        </head>
-        <body style="text-align: center;">
-          <h1 style="color: #333;">&#9889; Author &#9889;</h1>
-          <p style="color: #34495E;">Ivan Rivalcoba Rivas - Web Developer</p>
-          <div>
-            <img width="300px" src="https://media.istockphoto.com/id/180841365/photo/hes-a-handsome-man.jpg?s=612x612&w=0&k=20&c=vjQLLI8g_a0O6_xx0plUu3CJ9AMhnSzHssLwgem8gE4=" alt="Foto Ivan Rivalcoba">
-          </div>
-        </body>
-      </html>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico">
+    <title>My App Author</title>
+</head>
+<body style="text-align: center;">
+    <font face="Monospace">
+    <h1 style="color: #333;">&#127775; -AUTHOR- &#127775;</h1>
+    <p style="color: #5DADE2;">-DIANA ARROYO RODRIGUEZ-</p>
+    <p style="color: #5DADE2;">ESTUDIANTE DE INGENIERIA EN TICS</p> 
+    <p style="color: #2471A3">&#129514 Actividad: Enrutado </p>
+    </font>
+    <img width="300px" src="writer.png" alt="Foto Diana Arroyo">
+</body>
+</html>
       `);
       console.log(`📣 Respondiendo: 200 ${req.url} ${req.method}`);
       // Estableciendo codigo de respuesta
@@ -103,38 +110,12 @@ const requestHandler = async (req, res) => {
       res.end();
       break;
     case "/favicon.ico":
-      // Especificar la ubicación del archivo de icono
-      const faviconPath = path.join(__dirname, 'favicon.ico');
-      try {
-        const data = await fs.readFile(faviconPath);
-        res.writeHead(200, { 'Content-Type': 'image/x-icon' });
-        res.end(data);
-      } catch (err) {
-        console.error(err);
-        // Peticion raiz
-        // Estableciendo cabeceras
-        res.setHeader('Content-Type', 'text/html');
-        // Escribiendo la respuesta
-        res.write(`
-        <html>
-          <head>
-            <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico">
-            <title>My App</title>
-          </head>
-          <body> 
-            <h1>&#128534; 500 El server esta fuera de servicio</h1>
-            <p>Lo sentimos pero hubo un error en nuestro server...</p>
-            <p> ${err.message}</p>
-          </body>
-        </html>
-        `);
-        console.log(`📣 Respondiendo: 500 ${req.url} ${req.method}`);
-        // Estableciendo codigo de respuesta
-        res.statusCode = 500;
-        // Cerrando la comunicacion
-        res.end();
-      }
+      const faviconPath = path.join(__dirname, 'program.ico');
+      const data = await fs.readFile(faviconPath);
+      res.writeHead(200, { 'Content-Type': 'image/x-icon' });
+      res.end(data);
       break;
+      
     case "/message":
       // Verificando si es post
       if (method === "POST") {
